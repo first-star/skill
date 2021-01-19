@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>目的</strong>
+  <%= @task.purpose %>
+</p>
+
+<p>
+  <strong>時間</strong>
+  <%= @task.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
