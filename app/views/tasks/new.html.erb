@@ -1,19 +1,19 @@
-<%= form_with(model: @task, local: true) do |form| %>
+<%= form_with model: task, local: true do |f| %>
 
-  <div class="purpose">
-    <%= form.label :purpose %>
-    <%= form.text_field :purpose %>
+  <div class="field">
+    <%= f.label :purpose, "追加するタスク" %><br />
+    <%= f.text_field :purpose %>
   </div>
 
-    <div class="time">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
+    <div class="field">
+    <%= f.label :start_time, "タスク開始時間" %><br />
+    <%= f.datetime_select :start_time %>
   </div>
 
 
 
-  <div class="submit">
-    <%= form.submit %>
+  <div class="actions">
+    <%= f.submit "追加する", class: :form__btn %>
   </div>
 
 <% end %>

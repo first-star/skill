@@ -1,37 +1,27 @@
-<h1>タスク管理</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>目的</th>
-      <th>時間</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.purpose %></td>
-        <td><%= task.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task.id) %></td>
-        <td><%= link_to 'Destroy',task_path(task.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'タスクを追加する', new_task_path %>
-
-<%= week_calendar events: @tasks do |date, tasks| %>
-  <%= date.day %>
-
-  <% tasks.each do |task| %>
-    <div>
-      <%= link_to task.purpose, task %>
-    </div>
-  <% end %>
-<% end %>
+  <div class="header">
+      <div class="header-logo">Continuation Skill</div>
+  </div>
+     <table>
+          <tbody>
+            <% @tasks.each do |task| %>
+              <tr>
+                <td><%= task.purpose %></td>
+                <td><%= task.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+                <td><%= link_to 'Show', task %></td>
+                <td><%= link_to 'Edit', edit_task_path(task.id) %></td>
+                <td><%= link_to 'Destroy',task_path(task.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+       </table>
+        <br>
+         <%= link_to 'タスクを追加する', new_task_path %>
+        <%= week_calendar events: @tasks do |date, tasks| %>
+          <%= date %>
+          <% tasks.each do |task| %>
+            <div>
+               <%= task.start_time.hour %>:<%= task.start_time.min %> 
+               <%= link_to task.purpose, task%>
+            </div>
+          <% end %>
+        <% end %>
